@@ -1,0 +1,142 @@
+A51 MACRO ASSEMBLER  MAIN                                                                 10/20/2016 08:35:27 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02b
+OBJECT MODULE PLACED IN main.OBJ
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.exe D:\projects\C51\asmpr\5.2\main.A51 DEBUG SYMBOLS OBJECT(main.OBJ) 
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1                     ORG 0000
+0000 801B              2                     JMP MAIN
+001B                   3                     ORG 01BH
+001B 8019              4                     JMP TIME
+                       5                     
+001D 753305            6     MAIN:           MOV 33H,#05H
+0020 75300D            7                     MOV 30H,#13
+0023 753101            8                     MOV 31H,#1
+0026 758910            9                     MOV TMOD,#10H
+0029 758BB0           10                     MOV TL1,#0B0H
+002C 758D3C           11                     MOV TH1,#3CH
+002F D28E             12                     SETB TR1
+0031 75A888           13                     MOV IE,#88H
+0034 80FE             14                     SJMP $
+                      15     
+0036 758BB0           16     TIME:           MOV TL1,#0B0H   ;÷ÿ÷√ ±º‰”√
+0039 758D3C           17                     MOV TH1,#3CH
+003C D53323           18                     DJNZ 33H,RETURN
+003F 753305           19                     MOV 33H,#05H
+0042 A830             20                     MOV R0,30H
+0044 A931             21                     MOV R1,31H
+0046 B90105           22                     CJNE R1,#1,JDH2 ;≈–∂œ «∑Ò¥¶”⁄ª®—˘1
+                      23                             ;ª®—˘ø™ º£¨31h±Ì æª®—˘µƒ £¨30h±Ì æ—≠ª∑ƒ⁄≤øµƒ±Ì 
+0049 D818             24                     DJNZ R0,LP1     ;≈–∂œ «∑Òªπ Ù”⁄ª®—˘1
+004B 7807             25                     MOV R0,#7       ;«–µΩ2
+004D 09               26                     INC R1
+004E B90207           27     JDH2:           CJNE R1,#2,JDH3 ;≈–∂œ «∑Ò Ù”⁄2
+0051 D824             28                     DJNZ R0,LP2     ;≈–∂œ «≤ª «ªπ Ù”⁄2
+0053 8830             29                     MOV 30H,R0      
+0055 780D             30                     MOV R0,#13
+0057 09               31                     INC R1
+                      32                     ;
+0058 D831             33     JDH3:           DJNZ R0,LP3
+005A 8830             34                     MOV 30H,R0
+005C 780D             35                     MOV R0,#13
+005E 7901             36                     MOV R1,#1
+0060 8001             37                     JMP LP1
+0062 32               38     RETURN:         RETI
+                      39     
+0063 90009F           40     LP1:            MOV DPTR,#TAB1
+0066 E8               41                     MOV A,R0
+0067 93               42                     MOVC A,@A+DPTR
+0068 F590             43                     MOV P1,A
+006A 9000AC           44                     MOV DPTR,#TAB2
+006D E8               45                     MOV A,R0
+006E 93               46                     MOVC A,@A+DPTR
+006F F5B0             47                     MOV P3,A
+0071 8830             48                     MOV 30H,R0
+0073 8931             49                     MOV 31H,R1
+0075 80EB             50                     JMP RETURN
+                      51                     
+0077 9000B9           52     LP2:            MOV DPTR,#TAB3
+007A E8               53                     MOV A,R0
+007B 93               54                     MOVC A,@A+DPTR
+007C F590             55                     MOV P1,A
+007E 9000C0           56                     MOV DPTR,#TAB4
+0081 E8               57                     MOV A,R0
+0082 93               58                     MOVC A,@A+DPTR
+A51 MACRO ASSEMBLER  MAIN                                                                 10/20/2016 08:35:27 PAGE     2
+
+0083 F5B0             59                     MOV P3,A
+0085 8830             60                     MOV 30H,R0
+0087 8931             61                     MOV 31H,R1
+0089 80D7             62                     JMP RETURN            
+                      63                     
+008B 9000C7           64     LP3:            MOV DPTR,#TAB5
+008E E8               65                     MOV A,R0
+008F 93               66                     MOVC A,@A+DPTR
+0090 F590             67                     MOV P1,A
+0092 9000D4           68                     MOV DPTR,#TAB6
+0095 E8               69                     MOV A,R0
+0096 93               70                     MOVC A,@A+DPTR
+0097 F5B0             71                     MOV P3,A
+0099 8830             72                     MOV 30H,R0
+009B 8931             73                     MOV 31H,R1
+009D 80C3             74                     JMP RETURN
+                      75                     
+009F 00FFFFFF         76     TAB1:           DB 0,0FFH,0FFH,0FFH,0FFH,07FH,0BFH,0DFH,0EFH,0F7H,0FBH,0FDH,0FEH
+00A3 FF7FBFDF                
+00A7 EFF7FBFD                
+00AB FE                      
+00AC 00F7FBFD         77     TAB2:           DB 0,0F7H,0FBH,0FDH,0FEH,0FFH,0FFH,0FFH,0FFH,0FFH,0FFH,0FFH,0FFH
+00B0 FEFFFFFF                
+00B4 FFFFFFFF                
+00B8 FF                      
+00B9 FFFEFCF8         78     TAB3:           DB  0FFH,0FEH,0FCH,0F8H,0F0H,60H,00H
+00BD F06000                  
+00C0 FF070301         79     TAB4:           DB  0FFH,07H,03H,01H,00H,00H,00H
+00C4 000000                  
+00C7 FFFEFCF8         80     TAB5:           DB  0FFH,0FEH,0FCH,0F8H,0F0H,0E0H,0C0H,80H,00H,00H,00H,00H,00H
+00CB F0E0C080                
+00CF 00000000                
+00D3 00                      
+00D4 0F0F0F0F         81     TAB6:           DB  0FH,0FH,0FH,0FH,0FH,0FH,0FH,0FH,0FH,0EH,0CH,08H,00H
+00D8 0F0F0F0F                
+00DC 0F0E0C08                
+00E0 00                      
+                      82                     END
+A51 MACRO ASSEMBLER  MAIN                                                                 10/20/2016 08:35:27 PAGE     3
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+IE . . . . . . . .  D ADDR   00A8H   A   
+JDH2 . . . . . . .  C ADDR   004EH   A   
+JDH3 . . . . . . .  C ADDR   0058H   A   
+LP1. . . . . . . .  C ADDR   0063H   A   
+LP2. . . . . . . .  C ADDR   0077H   A   
+LP3. . . . . . . .  C ADDR   008BH   A   
+MAIN . . . . . . .  C ADDR   001DH   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+P3 . . . . . . . .  D ADDR   00B0H   A   
+RETURN . . . . . .  C ADDR   0062H   A   
+TAB1 . . . . . . .  C ADDR   009FH   A   
+TAB2 . . . . . . .  C ADDR   00ACH   A   
+TAB3 . . . . . . .  C ADDR   00B9H   A   
+TAB4 . . . . . . .  C ADDR   00C0H   A   
+TAB5 . . . . . . .  C ADDR   00C7H   A   
+TAB6 . . . . . . .  C ADDR   00D4H   A   
+TH1. . . . . . . .  D ADDR   008DH   A   
+TIME . . . . . . .  C ADDR   0036H   A   
+TL1. . . . . . . .  D ADDR   008BH   A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TR1. . . . . . . .  B ADDR   0088H.6 A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)
