@@ -1,0 +1,39 @@
+A51 MACRO ASSEMBLER  MAIN                                                                 10/15/2016 09:04:13 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02b
+OBJECT MODULE PLACED IN MAIN.OBJ
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE MAIN.a51 SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1                     ORG     0000
+0000 7530FF            2                     MOV             30H,#11111111B
+0003 753100            3                     MOV             31H,#00000000B
+0006 E530              4                     MOV             A,30H
+0008 541F              5                     ANL             A,#00011111B
+000A F8                6                     MOV             R0,A
+000B E531              7                     MOV             A,31H
+000D C4                8                     SWAP    A
+000E 23                9                     RL              A
+000F 54E0             10                     ANL             A,#11100000B
+0011 F9               11                     MOV             R1,A
+0012 48               12                     ORL             A,R0
+0013 F540             13                     MOV             40H,A
+                      14                     END
+                                             
+                                             
+A51 MACRO ASSEMBLER  MAIN                                                                 10/15/2016 09:04:13 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

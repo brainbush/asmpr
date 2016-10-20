@@ -1,0 +1,75 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        10/12/2016  17:19:16  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE A.obj TO 2.1.2
+
+
+INPUT MODULES INCLUDED:
+  A.obj (A)
+
+
+LINK MAP OF MODULE:  2.1.2 (A)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     003DH     ABSOLUTE     
+
+
+
+SYMBOL TABLE OF MODULE:  2.1.2 (A)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        A
+  D:00E0H         SYMBOL        ACC
+  C:0004H         SYMBOL        LP1
+  C:0014H         SYMBOL        LP2
+  C:0027H         SYMBOL        LP3
+  C:0038H         SYMBOL        LP4
+  C:0000H         LINE#         2
+  C:0002H         LINE#         3
+  C:0004H         LINE#         4
+  C:0006H         LINE#         5
+  C:0007H         LINE#         6
+  C:0009H         LINE#         7
+  C:000BH         LINE#         8
+  C:000DH         LINE#         9
+  C:000FH         LINE#         10
+  C:0010H         LINE#         11
+  C:0012H         LINE#         13
+  C:0014H         LINE#         14
+  C:0016H         LINE#         15
+  C:0018H         LINE#         16
+  C:001AH         LINE#         17
+  C:001CH         LINE#         18
+  C:001EH         LINE#         19
+  C:0020H         LINE#         20
+  C:0022H         LINE#         21
+  C:0024H         LINE#         22
+  C:0025H         LINE#         23
+  C:0027H         LINE#         24
+  C:0029H         LINE#         25
+  C:002BH         LINE#         26
+  C:002DH         LINE#         27
+BL51 BANKED LINKER/LOCATER V6.22                                                      10/12/2016  17:19:16  PAGE 2
+
+
+  C:002EH         LINE#         28
+  C:0030H         LINE#         29
+  C:0032H         LINE#         30
+  C:0034H         LINE#         31
+  C:0037H         LINE#         32
+  C:0038H         LINE#         33
+  C:003AH         LINE#         34
+  -------         ENDMOD        A
+
+Program Size: data=8.0 xdata=0 code=61
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

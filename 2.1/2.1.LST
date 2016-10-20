@@ -1,0 +1,73 @@
+A51 MACRO ASSEMBLER  2_1                                                                  10/12/2016 10:58:02 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02b
+NO OBJECT MODULE REQUESTED
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE 2.1.asm SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1                     ORG 0000
+0000 7830              2                     MOV R0,#30H
+0002 7B0F              3                     MOV R3,#0FH
+0004 E541              4     LP1:    MOV A,41H
+0006 26                5                     ADD A,@R0
+0007 F541              6                     MOV 41H,A
+0009 E540              7                     MOV A,40H
+000B 3400              8                     ADDC A,#00H
+000D F540              9                     MOV 40H,A
+000F 08               10                     INC R0
+0010 DBF2             11                     DJNZ R3,LP1
+                      12     ;----------------------------L41H,H40H
+0012 7440             13                     MOV A,#40H
+0014 75F010           14                     MOV B,#10H
+0017 84               15                     DIV AB
+                      16                     
+0018 F540             17                     MOV 40H,A
+001A E5F0             18                     MOV A,B
+001C C4               19                     SWAP A
+001D 54F0             20                     ANL A,#11110000B
+001F F8               21                     MOV R0,A
+0020 E541             22                     MOV A,41H
+0022 C4               23                     SWAP A
+0023 540F             24                     ANL A,#00001111B
+0025 48               25                     ORL A,R0
+0026 75F010           26                     MOV B,#10H
+0029 84               27                     DIV AB
+                      28                     
+002A C4               29                     SWAP A
+002B 54F0             30                     ANL A,#11110000B
+002D FB               31                     MOV R3,A
+002E E5F0             32                     MOV A,B
+0030 C4               33                     SWAP A
+0031 54F0             34                     ANL A,#11110000B
+0033 F8               35                     MOV R0,A
+0034 E541             36                     MOV A,41H
+0036 540F             37                     ANL A,#00001111B
+0038 48               38                     ORL A,R0
+0039 75F010           39                     MOV B,#10H
+003C 84               40                     DIV AB
+                      41                     CMP A,B
+*** _________________________________________^
+*** ERROR #A9 IN 41 (2.1.asm, LINE 41): SYNTAX ERROR
+003D 4B               42                     ORL A,R3
+                      43                     
+                      44                     END
+                                             
+A51 MACRO ASSEMBLER  2_1                                                                  10/12/2016 10:58:02 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+B. . . . . . . . .  D ADDR   00F0H   A   
+CMP. . . . . . . .    ----   -----       
+LP1. . . . . . . .  C ADDR   0004H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 1 ERROR(S)

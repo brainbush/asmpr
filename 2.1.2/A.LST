@@ -1,0 +1,63 @@
+A51 MACRO ASSEMBLER  A                                                                    10/12/2016 17:19:16 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02b
+OBJECT MODULE PLACED IN A.OBJ
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE A.a51 SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1                     ORG 0000
+0000 7830              2                     MOV R0,#30H
+0002 7B10              3                     MOV R3,#10H
+0004 E541              4     LP1:    MOV A,41H
+0006 26                5                     ADD A,@R0
+0007 F541              6                     MOV 41H,A
+0009 E540              7                     MOV A,40H
+000B 3400              8                     ADDC A,#00H
+000D F540              9                     MOV 40H,A
+000F 08               10                     INC R0
+0010 DBF2             11                     DJNZ R3,LP1
+                      12     ;----------------------------L41H,H40H
+0012 7800             13                     MOV R0,#00
+0014 E540             14     LP2:    MOV     A,40H
+0016 600F             15                     JZ      LP3
+0018 E541             16                     MOV     A,41H
+001A 9410             17                     SUBB A,#16
+001C F541             18                     MOV 41H,A
+001E E540             19                     MOV A,40H
+0020 9400             20                     SUBB A,#00H
+0022 F540             21                     MOV 40H,A
+0024 08               22                     INC R0
+0025 70ED             23                     JNZ     LP2
+0027 E541             24     LP3:    MOV A,41H
+0029 9410             25                     SUBB    A,#16
+002B F541             26                     MOV 41H,A
+002D 08               27                     INC R0
+002E 54F0             28                     ANL     A,#11110000B
+0030 70F5             29                     JNZ LP3
+0032 E541             30                     MOV A,41H
+0034 30E301           31                     JNB ACC.3,LP4
+0037 08               32                     INC R0
+0038 8840             33     LP4:    MOV 40H,R0
+003A 754100           34                     MOV 41H,#00
+                      35                     END
+A51 MACRO ASSEMBLER  A                                                                    10/12/2016 17:19:16 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+ACC. . . . . . . .  D ADDR   00E0H   A   
+LP1. . . . . . . .  C ADDR   0004H   A   
+LP2. . . . . . . .  C ADDR   0014H   A   
+LP3. . . . . . . .  C ADDR   0027H   A   
+LP4. . . . . . . .  C ADDR   0038H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

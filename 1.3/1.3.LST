@@ -1,0 +1,38 @@
+A51 MACRO ASSEMBLER  1_3                                                                  10/10/2016 18:34:00 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02b
+OBJECT MODULE PLACED IN 1.3.OBJ
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE 1.3.ASM SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1                     ORG 0000
+0000 7830              2                     MOV R0,#30H
+0002 7A08              3                     MOV R2,#8
+0004 7400              4                     MOV A,#0
+0006 26                5     LOOP:   ADD A,@R0
+0007 08                6                     INC R0
+0008 DAFC              7                     DJNZ R2,LOOP
+                       8                     ;MOV R0,#40H
+000A 754000            9                     MOV 40H,#0
+000D 754100           10                     MOV 41H,#0
+0010 754200           11                     MOV 42H,#0
+0013 F540             12                     MOV 40H,A
+                      13                     ;MOV @R0,A
+                      14                     END
+A51 MACRO ASSEMBLER  1_3                                                                  10/10/2016 18:34:00 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+LOOP . . . . . . .  C ADDR   0006H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

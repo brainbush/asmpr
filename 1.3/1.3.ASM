@@ -1,0 +1,15 @@
+		ORG 0000
+		MOV 40H,#0
+		MOV 41H,#0
+		MOV 42H,#0
+		MOV R0,#30H
+		MOV R2,#8
+		MOV A,#0
+LOOP:	MOV A,@R0
+		ADD 
+		INC R0
+		DJNZ R2,LOOP
+		;MOV R0,#40H
+		MOV 40H,A
+		;MOV @R0,A
+		END

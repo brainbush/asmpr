@@ -1,0 +1,65 @@
+A51 MACRO ASSEMBLER  2                                                                    10/12/2016 15:34:11 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02b
+OBJECT MODULE PLACED IN 2.OBJ
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE 2.a51 SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1                             ORG     0000
+0000 E4                2     BALANCED:       CLR             A
+0001 F540              3                             MOV             40H,A
+0003 F541              4                             MOV     41H,A
+0005 F542              5                             MOV     42H,A
+0007 F543              6                             MOV             43H,A
+0009 7F18              7                             MOV             R7,#24
+000B C3                8     START:          CLR             C
+000C E532              9                             MOV             A,32H
+000E 33               10                             RLC             A
+000F F532             11                             MOV             32H,A
+0011 E531             12                             MOV             A,31H
+0013 33               13                             RLC             A
+0014 F531             14                             MOV             31H,A
+0016 E530             15                             MOV             A,30H
+0018 33               16                             RLC             A
+0019 F530             17                             MOV             30H,A
+                      18                             
+001B E543             19                             MOV             A,43H
+001D 3543             20                             ADDC    A,43H
+001F D4               21                             DA              A
+0020 F543             22                             MOV     43H,A
+0022 E542             23                             MOV             A,42H
+0024 3542             24                             ADDC    A,42H
+0026 D4               25                             DA              A
+0027 F542             26                             MOV     42H,A
+0029 E541             27                             MOV             A,41H
+002B 3541             28                             ADDC    A,41H
+002D D4               29                             DA              A
+002E F541             30                             MOV     41H,A
+0030 E540             31                             MOV             A,40H
+0032 3540             32                             ADDC    A,40H
+0034 D4               33                             DA              A
+0035 F540             34                             MOV     40H,A
+0037 DFD2             35                             DJNZ    R7,START
+                      36                             
+                      37             
+                      38             ;ORG 30H
+                      39             ;       DB 10101010B,11111111B,10100101B
+                      40             END
+A51 MACRO ASSEMBLER  2                                                                    10/12/2016 15:34:11 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+BALANCED . . . . .  C ADDR   0000H   A   
+START. . . . . . .  C ADDR   000BH   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

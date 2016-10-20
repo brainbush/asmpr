@@ -1,0 +1,64 @@
+A51 MACRO ASSEMBLER  MAIN                                                                 10/15/2016 13:08:20 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02b
+OBJECT MODULE PLACED IN MAIN.OBJ
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.exe D:\projects\C51\asmpr\4.1\MAIN.A51 DEBUG SYMBOLS OBJECT(MAIN.OBJ) 
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1                     ORG 0000
+0000 D3                2     LP:             SETB C
+0001 79FE              3                     MOV R1,#0XFE
+0003 7AFF              4                     MOV R2,#0XFF
+0005 7B0C              5                     MOV R3,#12
+0007 8990              6     LP1:            MOV P1,R1
+0009 8AB0              7                     MOV P3,R2
+                       8                     
+000B E9                9                     MOV A,R1
+000C 33               10                     RLC A
+000D F9               11                     MOV R1,A
+                      12                     
+000E EA               13                     MOV A,R2
+000F 33               14                     RLC A
+0010 FA               15                     MOV R2,A
+0011 1117             16                     ACALL DELAY400MS
+0013 DBF2             17                     DJNZ R3,LP1
+0015 80E9             18                     JMP LP
+0017                  19     DELAY400MS:                     ;@12.000MHz
+0017 C030             20                     PUSH 30H
+0019 C031             21                     PUSH 31H
+001B C032             22                     PUSH 32H
+001D 753004           23                     MOV 30H,#4
+0020 75310B           24                     MOV 31H,#11
+0023 753226           25                     MOV 32H,#38
+0026                  26     NEXT3:
+0026 D532FD           27                     DJNZ 32H,NEXT3
+0029 D531FA           28                     DJNZ 31H,NEXT3
+002C D530F7           29                     DJNZ 30H,NEXT3
+002F D032             30                     POP 32H
+0031 D031             31                     POP 31H
+0033 D030             32                     POP 30H
+0035 22               33                     RET
+                      34     
+                      35              END
+A51 MACRO ASSEMBLER  MAIN                                                                 10/15/2016 13:08:20 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+DELAY400MS . . . .  C ADDR   0017H   A   
+LP . . . . . . . .  C ADDR   0000H   A   
+LP1. . . . . . . .  C ADDR   0007H   A   
+NEXT3. . . . . . .  C ADDR   0026H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+P3 . . . . . . . .  D ADDR   00B0H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

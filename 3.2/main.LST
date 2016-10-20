@@ -1,0 +1,35 @@
+A51 MACRO ASSEMBLER  MAIN                                                                 10/17/2016 18:29:06 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02b
+OBJECT MODULE PLACED IN main.OBJ
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE main.a51 SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1                     ORG     0000
+0000 7830              2                     MOV             R0,#30H
+0002 7900              3                     MOV             R1,#00H
+0004 7A10              4                     MOV     R2,#16
+0006 B65501            5     LOOP:   CJNE    @R0,#55H,JUMP
+0009 09                6                     INC             R1
+000A 08                7     JUMP:   INC     R0
+000B DAF9              8                     DJNZ    R2,LOOP
+000D 8950              9                     MOV             50H,R1
+                      10                     END
+A51 MACRO ASSEMBLER  MAIN                                                                 10/17/2016 18:29:06 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+JUMP . . . . . . .  C ADDR   000AH   A   
+LOOP . . . . . . .  C ADDR   0006H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)
