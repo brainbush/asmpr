@@ -1,0 +1,133 @@
+A51 MACRO ASSEMBLER  MAIN                                                                 10/23/2016 16:03:27 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.5.0
+OBJECT MODULE PLACED IN MAIN.OBJ
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.exe D:\projects\C51\asmpr\6.1\MAIN.A51 DEBUG SYMBOLS OBJECT(MAIN.OBJ) 
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1              ORG 0000
+
+0000 753001            2              MOV 30H,#01H
+
+0003 753101            3              MOV 31H,#01H
+
+0006 900046            4              MOV DPTR,#TAB
+
+                       5              
+
+0009 E531              6              MOV A,31H
+
+000B 540F              7              ANL A,#00001111B
+
+000D 93                8              MOVC A,@A+DPTR
+
+000E F8                9              MOV R0,A
+
+                      10              
+
+000F E531             11              MOV A,31H
+
+0011 C4               12              SWAP A
+
+0012 540F             13              ANL A,#00001111B
+
+0014 93               14              MOVC A,@A+DPTR
+
+0015 F9               15              MOV R1,A
+
+                      16              
+
+0016 E530             17              MOV A,30H
+
+0018 540F             18              ANL A,#00001111B
+
+001A 93               19              MOVC A,@A+DPTR
+
+001B FA               20              MOV R2,A
+
+                      21              
+
+001C E531             22              MOV A,31H
+
+001E C4               23              SWAP A
+
+001F 540F             24              ANL A,#00001111B
+
+0021 93               25              MOVC A,@A+DPTR
+
+0022 FB               26              MOV R3,A
+
+                      27              
+
+0023 759800           28              MOV SCON,#00H
+
+                      29              
+
+0026 E8               30              MOV A,R0
+
+0027 F599             31              MOV SBUF,A
+
+0029 3099FD           32              JNB TI,$
+
+002C C299             33              CLR TI
+
+                      34              
+
+002E E9               35              MOV A,R1
+
+002F F599             36              MOV SBUF,A
+
+0031 3099FD           37              JNB TI,$
+
+0034 C299             38              CLR TI
+
+                      39              
+
+0036 EA               40              MOV A,R2
+
+0037 F599             41              MOV SBUF,A
+
+0039 3099FD           42              JNB TI,$
+
+003C C299             43              CLR TI
+
+                      44              
+
+003E EB               45              MOV A,R3
+
+003F F599             46              MOV SBUF,A
+
+0041 3099FD           47              JNB TI,$
+
+0044 C299             48              CLR TI
+
+                      49              
+
+0046 039F250D         50              TAB:   DB 003H,09FH,025H,00DH,099H,049H,041H,01FH,001H,009H,011H,000H,063H,061H,07
+                             1H
+
+004A 9949411F                
+004E 01091100                
+0052 636171                  
+                      51              END
+
+A51 MACRO ASSEMBLER  MAIN                                                                 10/23/2016 16:03:27 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+SBUF . . . . . . .  D ADDR   0099H   A   
+SCON . . . . . . .  D ADDR   0098H   A   
+TAB. . . . . . . .  C ADDR   0046H   A   
+TI . . . . . . . .  B ADDR   0098H.1 A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

@@ -1,96 +1,168 @@
-A51 MACRO ASSEMBLER  MAIN                                                                 10/17/2016 19:36:25 PAGE     1
+A51 MACRO ASSEMBLER  MAIN                                                                 10/23/2016 15:30:50 PAGE     1
 
 
-MACRO ASSEMBLER A51 V8.02b
+MACRO ASSEMBLER A51 V8.2.5.0
 OBJECT MODULE PLACED IN MAIN.OBJ
 ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.exe D:\projects\C51\asmpr\4.2\MAIN.A51 DEBUG SYMBOLS OBJECT(MAIN.OBJ) 
 
 LOC  OBJ            LINE     SOURCE
 
 0000                   1                     ORG 0000
+
 0000 D3                2     LP:             SETB C
+
 0001 79FE              3                     MOV R1,#0XFE
+
 0003 7AFF              4                     MOV R2,#0XFF
+
 0005 7B0C              5                     MOV R3,#12
+
 0007 8990              6     LP1:            MOV P1,R1
+
 0009 8AB0              7                     MOV P3,R2
+
 000B E9                8                     MOV A,R1
+
 000C 33                9                     RLC A
+
 000D F9               10                     MOV R1,A
+
 000E EA               11                     MOV A,R2
+
 000F 33               12                     RLC A
+
 0010 FA               13                     MOV R2,A
+
 0011 120058           14                     LCALL DELAY400MS
+
 0014 DBF1             15                     DJNZ R3,LP1
+
                       16                     
+
 0016 7B07             17                     MOV R3,#7
+
 0018 900077           18     HUA2:           MOV DPTR,#TAB1
+
 001B EB               19                     MOV A,R3
+
 001C 93               20                     MOVC A,@A+DPTR
+
 001D F590             21                     MOV P1,A
+
 001F 90007E           22                     MOV DPTR,#TAB2
+
 0022 EB               23                     MOV A,R3
+
 0023 93               24                     MOVC A,@A+DPTR
+
 0024 F5B0             25                     MOV P3,A
+
 0026 120058           26                     LCALL DELAY400MS
+
 0029 DBED             27                     DJNZ R3,HUA2
+
                       28     
+
 002B 7B04             29                     MOV R3,#4
+
 002D 7590FF           30     HUA3:           MOV P1,#0FFH
+
 0030 75B0FF           31                     MOV P3,#0FFH
+
 0033 120058           32                     LCALL DELAY400MS
+
 0036 759000           33                     MOV P1,#00H
+
 0039 75B000           34                     MOV P3,#00H
+
 003C 120058           35                     LCALL DELAY400MS
+
 003F DBEC             36                     DJNZ R3,HUA3
+
                       37                     
+
 0041 7B0E             38                     MOV R3,#14
+
 0043 900085           39     HUA4:           MOV DPTR,#TAB3
+
 0046 EB               40                     MOV A,R3
+
 0047 93               41                     MOVC A,@A+DPTR
+
 0048 F590             42                     MOV P1,A
+
 004A 900092           43                     MOV DPTR,#TAB4
+
 004D EB               44                     MOV A,R3
+
 004E 93               45                     MOVC A,@A+DPTR
+
 004F F5B0             46                     MOV P3,A
+
 0051 120058           47                     LCALL DELAY400MS
+
 0054 DBED             48                     DJNZ R3,HUA4
+
 0056 80A8             49                     JMP LP
+
                       50                     
+
 0058                  51     DELAY400MS:                     ;@12.000MHz
+
 0058 C030             52                     PUSH 30H
+
 005A C031             53                     PUSH 31H
+
 005C C032             54                     PUSH 32H
+
 005E 753004           55                     MOV 30H,#4
+
 0061 75310B           56                     MOV 31H,#11
+
 0064 753226           57                     MOV 32H,#38
+
 0067                  58     NEXT:
-A51 MACRO ASSEMBLER  MAIN                                                                 10/17/2016 19:36:25 PAGE     2
+
+A51 MACRO ASSEMBLER  MAIN                                                                 10/23/2016 15:30:50 PAGE     2
 
 0067 D532FD           59                     DJNZ 32H,NEXT
+
 006A D531FA           60                     DJNZ 31H,NEXT
+
 006D D530F7           61                     DJNZ 30H,NEXT
+
 0070 D032             62                     POP 32H
+
 0072 D031             63                     POP 31H
+
 0074 D030             64                     POP 30H
+
 0076 22               65                     RET
+
                       66     
+
 0077 FFFEFCF8         67                     TAB1:          DB  0FFH,0FEH,0FCH,0F8H,0F0H,60H,00H
+
 007B F06000                  
 007E FF070301         68                     TAB2:          DB  0FFH,07H,03H,01H,00H,00H,00H
+
 0082 000000                  
 0085 FFFEFCF8         69                     TAB3:          DB  0FFH,0FEH,0FCH,0F8H,0F0H,0E0H,0C0H,80H,00H,00H,00H,00H,0
                              0H
+
 0089 F0E0C080                
 008D 00000000                
 0091 00                      
 0092 0F0F0F0F         70                     TAB4:          DB  0FH,0FH,0FH,0FH,0FH,0FH,0FH,0FH,0FH,0EH,0CH,08H,00H
+
 0096 0F0F0F0F                
 009A 0F0E0C08                
 009E 00                      
                       71                    END
+
                              
-A51 MACRO ASSEMBLER  MAIN                                                                 10/17/2016 19:36:25 PAGE     3
+
+A51 MACRO ASSEMBLER  MAIN                                                                 10/23/2016 15:30:50 PAGE     3
 
 SYMBOL TABLE LISTING
 ------ ----- -------

@@ -1,0 +1,217 @@
+A51 MACRO ASSEMBLER  MAIN                                                                 10/23/2016 21:47:02 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.5.0
+OBJECT MODULE PLACED IN MAIN.OBJ
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.exe D:\projects\C51\asmpr\6.2\MAIN.A51 DEBUG SYMBOLS OBJECT(MAIN.OBJ) 
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1              ORG 0000
+
+0000 807A              2              JMP MAIN
+
+001B                   3              ORG 01BH
+
+001B 8000              4              JMP TIME
+
+                       5              
+
+001D C0D0              6     TIME:    PUSH PSW
+
+001F C0E0              7              PUSH ACC
+
+0021 758BB0            8              MOV TL1,#0B0H
+
+0024 758D3C            9              MOV TH1,#3CH
+
+0027 D5434D           10              DJNZ 43H,RETURN
+
+002A 75430A           11              MOV 43H,#0AH
+
+                      12              
+
+002D E531             13              MOV A,31H
+
+002F 04               14              INC A
+
+0030 D4               15              DA  A
+
+0031 F531             16              MOV 31H,A
+
+0033 E530             17              MOV A,30H
+
+0035 3400             18              ADDC A,#00H
+
+0037 D4               19              DA  A
+
+0038 F530             20              MOV 30H,A
+
+                      21              
+
+003A E531             22              MOV A,31H
+
+003C 540F             23              ANL A,#00001111B
+
+003E 93               24              MOVC A,@A+DPTR
+
+003F F8               25              MOV R0,A
+
+                      26              
+
+0040 E531             27              MOV A,31H
+
+0042 C4               28              SWAP A
+
+0043 540F             29              ANL A,#00001111B
+
+0045 93               30              MOVC A,@A+DPTR
+
+0046 F9               31              MOV R1,A
+
+                      32              
+
+0047 E530             33              MOV A,30H
+
+0049 540F             34              ANL A,#00001111B
+
+004B 93               35              MOVC A,@A+DPTR
+
+004C FA               36              MOV R2,A
+
+                      37              
+
+004D E530             38              MOV A,30H
+
+004F C4               39              SWAP A
+
+0050 540F             40              ANL A,#00001111B
+
+0052 93               41              MOVC A,@A+DPTR
+
+0053 FB               42              MOV R3,A
+
+                      43              
+
+0054 759800           44              MOV SCON,#00H
+
+                      45              
+
+0057 E8               46              MOV A,R0
+
+0058 F599             47              MOV SBUF,A
+
+005A 3099FD           48              JNB TI,$
+
+005D C299             49              CLR TI
+
+                      50              
+
+005F E9               51              MOV A,R1
+
+0060 F599             52              MOV SBUF,A
+
+0062 3099FD           53              JNB TI,$
+
+0065 C299             54              CLR TI
+
+                      55              
+
+0067 EA               56              MOV A,R2
+
+0068 F599             57              MOV SBUF,A
+
+006A 3099FD           58              JNB TI,$
+
+A51 MACRO ASSEMBLER  MAIN                                                                 10/23/2016 21:47:02 PAGE     2
+
+006D C299             59              CLR TI
+
+                      60              
+
+006F EB               61              MOV A,R3
+
+0070 F599             62              MOV SBUF,A
+
+0072 3099FD           63              JNB TI,$
+
+0075 C299             64              CLR TI
+
+                      65              
+
+0077 D0E0             66     RETURN:  POP ACC
+
+0079 D0D0             67              POP PSW
+
+007B 32               68              RETI    
+
+                      69              
+
+007C 75430A           70     MAIN:    MOV 43H,#0AH   
+
+007F 758910           71              MOV TMOD,#10H
+
+0082 758BB0           72              MOV TL1,#0B0H
+
+0085 758D3C           73              MOV TH1,#3CH
+
+0088 D28E             74              SETB TR1
+
+008A 75A888           75              MOV IE,#88H
+
+                      76                      
+
+008D 753000           77              MOV 30H,#00H
+
+0090 753100           78              MOV 31H,#00H
+
+0093 90009A           79              MOV DPTR,#TAB
+
+                      80                      
+
+0096 80FE             81              SJMP $
+
+                      82              
+
+0098 80E2             83              JMP MAIN
+
+                      84              
+
+009A 039F250D         85              TAB:   DB 003H,09FH,025H,00DH,099H,049H,041H,01FH,001H,009H,011H,000H,063H,061H,07
+                             1H
+
+009E 9949411F                
+00A2 01091100                
+00A6 636171                  
+                      86              END
+
+                             
+
+A51 MACRO ASSEMBLER  MAIN                                                                 10/23/2016 21:47:02 PAGE     3
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+ACC. . . . . . . .  D ADDR   00E0H   A   
+IE . . . . . . . .  D ADDR   00A8H   A   
+MAIN . . . . . . .  C ADDR   007CH   A   
+PSW. . . . . . . .  D ADDR   00D0H   A   
+RETURN . . . . . .  C ADDR   0077H   A   
+SBUF . . . . . . .  D ADDR   0099H   A   
+SCON . . . . . . .  D ADDR   0098H   A   
+TAB. . . . . . . .  C ADDR   009AH   A   
+TH1. . . . . . . .  D ADDR   008DH   A   
+TI . . . . . . . .  B ADDR   0098H.1 A   
+TIME . . . . . . .  C ADDR   001DH   A   
+TL1. . . . . . . .  D ADDR   008BH   A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TR1. . . . . . . .  B ADDR   0088H.6 A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)
