@@ -1,0 +1,454 @@
+A51 MACRO ASSEMBLER  MAIN                                                                 11/09/2016 18:11:37 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.5.0
+OBJECT MODULE PLACED IN MAIN.OBJ
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.exe D:\projects\C51\asmpr\8.3\MAIN.A51 DEBUG SYMBOLS OBJECT(MAIN.OBJ) 
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1           ORG 0000
+
+0000 801B              2           JMP MAIN
+
+001B                   3           ORG 01BH
+
+001B 01C9              4           JMP JUDX
+
+                       5        
+
+001D                   6     MAIN:
+
+001D 752000            7           MOV 20H,#00H
+
+0020 753000            8           MOV 30H,#00H
+
+0023 753100            9           MOV 31H,#00H
+
+0026 753200           10           MOV 32H,#00H
+
+0029 754303           11           MOV 43H,#03H 
+
+002C 758910           12           MOV TMOD,#10H
+
+002F 758BB0           13           MOV TL1,#0B0H
+
+0032 758D3C           14           MOV TH1,#3CH
+
+0035 D28E             15           SETB TR1
+
+0037 75A888           16           MOV IE,#88H
+
+003A 900157           17           MOV DPTR,#TAB
+
+                      18               
+
+003D                  19     LOOP:
+
+003D C2B1             20           CLR P3.1
+
+003F 75A0FF           21           MOV P2,#0FFH
+
+0042 D2B1             22           SETB P3.1
+
+0044 8550A0           23           MOV P2,50H
+
+0047 D2B0             24           SETB P3.0  
+
+0049 C2B1             25           CLR P3.1
+
+004B 75A0DF           26           MOV P2,#0DFH
+
+004E C2B0             27           CLR P3.0
+
+0050 D2B1             28           SETB P3.1
+
+0052 3166             29           CALL DELAY
+
+                      30           
+
+0054 C2B1             31           CLR P3.1
+
+0056 75A0FF           32           MOV P2,#0FFH
+
+0059 D2B1             33           SETB P3.1
+
+005B 8551A0           34           MOV P2,51H
+
+005E D2B0             35           SETB P3.0  
+
+0060 C2B1             36           CLR P3.1
+
+0062 75A0EF           37           MOV P2,#0EFH
+
+0065 C2B0             38           CLR P3.0
+
+0067 D2B1             39           SETB P3.1
+
+0069 3166             40           CALL DELAY
+
+                      41     
+
+006B C2B1             42           CLR P3.1
+
+006D 75A0FF           43           MOV P2,#0FFH
+
+0070 D2B1             44           SETB P3.1
+
+0072 8552A0           45           MOV P2,52H
+
+0075 D2B0             46           SETB P3.0  
+
+0077 C2B1             47           CLR P3.1
+
+0079 75A0F7           48           MOV P2,#0F7H
+
+007C C2B0             49           CLR P3.0
+
+007E D2B1             50           SETB P3.1
+
+0080 3166             51           CALL DELAY
+
+                      52     
+
+0082 C2B1             53           CLR P3.1
+
+0084 75A0FF           54           MOV P2,#0FFH
+
+0087 D2B1             55           SETB P3.1
+
+0089 8553A0           56           MOV P2,53H
+
+008C D2B0             57           SETB P3.0  
+
+008E C2B1             58           CLR P3.1
+
+A51 MACRO ASSEMBLER  MAIN                                                                 11/09/2016 18:11:37 PAGE     2
+
+0090 75A0FB           59           MOV P2,#0FBH
+
+0093 C2B0             60           CLR P3.0
+
+0095 D2B1             61           SETB P3.1
+
+0097 3166             62           CALL DELAY
+
+                      63           
+
+0099 C2B1             64           CLR P3.1
+
+009B 75A0FF           65           MOV P2,#0FFH
+
+009E D2B1             66           SETB P3.1
+
+00A0 8554A0           67           MOV P2,54H
+
+00A3 D2B0             68           SETB P3.0  
+
+00A5 C2B1             69           CLR P3.1
+
+00A7 75A0FD           70           MOV P2,#0FDH
+
+00AA C2B0             71           CLR P3.0
+
+00AC D2B1             72           SETB P3.1
+
+00AE 3166             73           CALL DELAY
+
+                      74           
+
+00B0 C2B1             75           CLR P3.1
+
+00B2 75A0FF           76           MOV P2,#0FFH
+
+00B5 D2B1             77           SETB P3.1
+
+00B7 8555A0           78           MOV P2,55H
+
+00BA D2B0             79           SETB P3.0  
+
+00BC C2B1             80           CLR P3.1
+
+00BE 75A0FE           81           MOV P2,#0FEH
+
+00C1 C2B0             82           CLR P3.0
+
+00C3 D2B1             83           SETB P3.1
+
+00C5 3166             84           CALL DELAY
+
+00C7 013D             85           JMP LOOP    
+
+                      86               
+
+                      87               
+
+00C9                  88     JUDX: 
+
+                      89               
+
+00C9 758BB0           90               MOV TL1,#0B0H
+
+00CC 758D3C           91           MOV TH1,#3CH
+
+00CF D5433C           92           DJNZ 43H,RETURN
+
+00D2 754303           93           MOV 43H,#03H
+
+                      94               
+
+00D5 759000           95               MOV P1,#00H
+
+00D8 D290             96           SETB P1.0
+
+00DA 3174             97           CALL DELAY10MS
+
+00DC E590             98           MOV A,P1
+
+00DE 54F0             99           ANL A,#11110000B
+
+00E0 B4002C          100           CJNE A,#00H,JUDY1
+
+00E3 C290            101           CLR P1.0
+
+                     102           
+
+00E5 D291            103           SETB P1.1
+
+00E7 3174            104           CALL DELAY10MS
+
+00E9 E590            105           MOV A,P1
+
+00EB 54F0            106           ANL A,#11110000B
+
+00ED B40024          107           CJNE A,#00H,JUDY2
+
+00F0 C291            108           CLR P1.1
+
+                     109           
+
+00F2 D292            110           SETB P1.2
+
+00F4 3174            111           CALL DELAY10MS
+
+00F6 E590            112           MOV A,P1
+
+00F8 54F0            113           ANL A,#11110000B
+
+00FA B4001C          114           CJNE A,#00H,JUDY3
+
+00FD C292            115           CLR P1.2
+
+                     116           
+
+00FF D293            117           SETB P1.3
+
+0101 3174            118           CALL DELAY10MS
+
+0103 E590            119           MOV A,P1
+
+0105 54F0            120           ANL A,#11110000B
+
+0107 B40014          121           CJNE A,#00H,JUDY4
+
+010A C293            122           CLR P1.3
+
+                     123           
+
+010C 8000            124           JMP RETURN
+
+A51 MACRO ASSEMBLER  MAIN                                                                 11/09/2016 18:11:37 PAGE     3
+
+                     125        
+
+010E                 126     RETURN:
+
+010E 32              127           RETI 
+
+                     128               
+
+010F                 129     JUDY1:
+
+010F F8              130           MOV R0,A
+
+0110 7400            131           MOV A,#0
+
+0112 800F            132           JMP Y1
+
+0114                 133     JUDY2:
+
+0114 F8              134           MOV R0,A
+
+0115 7404            135           MOV A,#4
+
+0117 800A            136           JMP Y1
+
+0119                 137     JUDY3:
+
+0119 F8              138           MOV R0,A
+
+011A 7408            139           MOV A,#8
+
+011C 8005            140           JMP Y1
+
+011E                 141     JUDY4:
+
+011E F8              142           MOV R0,A
+
+011F 740C            143           MOV A,#0CH
+
+0121 8000            144           JMP Y1
+
+0123 B81004          145     Y1:   CJNE R0,#10H,Y2
+
+0126 2400            146           ADD A,#0
+
+0128 8019            147           JMP CHG
+
+012A B82004          148     Y2:   CJNE R0,#20H,Y3
+
+012D 2401            149           ADD A,#1
+
+012F 8012            150           JMP CHG
+
+0131 B84004          151     Y3:   CJNE R0,#40H,Y4
+
+0134 2402            152           ADD A,#2
+
+0136 800B            153           JMP CHG
+
+0138 B88006          154     Y4:   CJNE R0,#80H,err
+
+013B 2403            155           ADD A,#3
+
+013D 8004            156           JMP CHG
+
+                     157               
+
+013F 80CD            158               JMP RETURN
+
+                     159         
+
+0141 80FE            160     err:  jmp $
+
+                     161     
+
+                     162          
+
+                     163           
+
+                     164           
+
+0143                 165     CHG:       
+
+0143 855455          166           MOV 55H,54H
+
+0146 855354          167           MOV 54H,53H
+
+0149 855253          168           MOV 53H,52H
+
+014C 855152          169           MOV 52H,51H
+
+014F 855051          170           MOV 51H,50H
+
+0152 93              171           MOVC A,@A+DPTR 
+
+0153 F550            172           MOV 50H,A
+
+                     173               
+
+0155 80B7            174               JMP RETURN
+
+                     175                 
+
+                     176     
+
+                     177           
+
+0157 FC60DAF2        178           TAB:      DB 0FCH,060H,0DAH,0F2H,066H,0B6H,0BEH,0E0H,0FEH,0F6H,0EEH,0FFH,09CH,09EH,08
+                             EH
+
+015B 66B6BEE0                
+015F FEF6EEFF                
+0163 9C9E8E                  
+                     179           
+
+0166                 180     DELAY:
+
+0166 00              181           NOP
+
+0167 756002          182           MOV 60H,#2
+
+016A 756102          183           MOV 61H,#2
+
+016D                 184     NEXT2:
+
+016D D561FD          185           DJNZ 61H,NEXT2
+
+0170 D560FA          186           DJNZ 60H,NEXT2
+
+A51 MACRO ASSEMBLER  MAIN                                                                 11/09/2016 18:11:37 PAGE     4
+
+0173 22              187           RET
+
+0174                 188     DELAY10MS:                      ;@12.000MHz
+
+0174 00              189           NOP
+
+0175 75625E          190           MOV 62H,#94
+
+0178 75635D          191           MOV 63H,#93
+
+017B                 192     NEXT:
+
+017B D563FD          193             DJNZ 63H,NEXT
+
+017E D562FA          194             DJNZ 62H,NEXT
+
+0181 22              195             RET
+
+                     196     
+
+                     197      END
+
+A51 MACRO ASSEMBLER  MAIN                                                                 11/09/2016 18:11:37 PAGE     5
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+CHG. . . . . . . .  C ADDR   0143H   A   
+DELAY. . . . . . .  C ADDR   0166H   A   
+DELAY10MS. . . . .  C ADDR   0174H   A   
+ERR. . . . . . . .  C ADDR   0141H   A   
+IE . . . . . . . .  D ADDR   00A8H   A   
+JUDX . . . . . . .  C ADDR   00C9H   A   
+JUDY1. . . . . . .  C ADDR   010FH   A   
+JUDY2. . . . . . .  C ADDR   0114H   A   
+JUDY3. . . . . . .  C ADDR   0119H   A   
+JUDY4. . . . . . .  C ADDR   011EH   A   
+LOOP . . . . . . .  C ADDR   003DH   A   
+MAIN . . . . . . .  C ADDR   001DH   A   
+NEXT . . . . . . .  C ADDR   017BH   A   
+NEXT2. . . . . . .  C ADDR   016DH   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+P2 . . . . . . . .  D ADDR   00A0H   A   
+P3 . . . . . . . .  D ADDR   00B0H   A   
+RETURN . . . . . .  C ADDR   010EH   A   
+TAB. . . . . . . .  C ADDR   0157H   A   
+TH1. . . . . . . .  D ADDR   008DH   A   
+TL1. . . . . . . .  D ADDR   008BH   A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TR1. . . . . . . .  B ADDR   0088H.6 A   
+Y1 . . . . . . . .  C ADDR   0123H   A   
+Y2 . . . . . . . .  C ADDR   012AH   A   
+Y3 . . . . . . . .  C ADDR   0131H   A   
+Y4 . . . . . . . .  C ADDR   0138H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

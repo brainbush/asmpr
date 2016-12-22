@@ -1,4 +1,4 @@
-A51 MACRO ASSEMBLER  MAIN                                                                 10/23/2016 21:47:02 PAGE     1
+A51 MACRO ASSEMBLER  MAIN                                                                 10/24/2016 19:10:39 PAGE     1
 
 
 MACRO ASSEMBLER A51 V8.2.5.0
@@ -123,7 +123,7 @@ LOC  OBJ            LINE     SOURCE
 
 006A 3099FD           58              JNB TI,$
 
-A51 MACRO ASSEMBLER  MAIN                                                                 10/23/2016 21:47:02 PAGE     2
+A51 MACRO ASSEMBLER  MAIN                                                                 10/24/2016 19:10:39 PAGE     2
 
 006D C299             59              CLR TI
 
@@ -165,29 +165,25 @@ LOC  OBJ            LINE     SOURCE
 
 0090 753100           78              MOV 31H,#00H
 
-0093 90009A           79              MOV DPTR,#TAB
+0093 900098           79              MOV DPTR,#TAB
 
                       80                      
 
 0096 80FE             81              SJMP $
 
-                      82              
+                      82     
 
-0098 80E2             83              JMP MAIN
-
-                      84              
-
-009A 039F250D         85              TAB:   DB 003H,09FH,025H,00DH,099H,049H,041H,01FH,001H,009H,011H,000H,063H,061H,07
+0098 039F250D         83              TAB:   DB 003H,09FH,025H,00DH,099H,049H,041H,01FH,001H,009H,011H,000H,063H,061H,07
                              1H
 
-009E 9949411F                
-00A2 01091100                
-00A6 636171                  
-                      86              END
+009C 9949411F                
+00A0 01091100                
+00A4 636171                  
+                      84              END
 
                              
 
-A51 MACRO ASSEMBLER  MAIN                                                                 10/23/2016 21:47:02 PAGE     3
+A51 MACRO ASSEMBLER  MAIN                                                                 10/24/2016 19:10:39 PAGE     3
 
 SYMBOL TABLE LISTING
 ------ ----- -------
@@ -202,7 +198,7 @@ PSW. . . . . . . .  D ADDR   00D0H   A
 RETURN . . . . . .  C ADDR   0077H   A   
 SBUF . . . . . . .  D ADDR   0099H   A   
 SCON . . . . . . .  D ADDR   0098H   A   
-TAB. . . . . . . .  C ADDR   009AH   A   
+TAB. . . . . . . .  C ADDR   0098H   A   
 TH1. . . . . . . .  D ADDR   008DH   A   
 TI . . . . . . . .  B ADDR   0098H.1 A   
 TIME . . . . . . .  C ADDR   001DH   A   

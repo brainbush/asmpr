@@ -1,81 +1,117 @@
-A51 MACRO ASSEMBLER  5_1                                                                  10/20/2016 07:55:53 PAGE     1
+A51 MACRO ASSEMBLER  5_1                                                                  10/24/2016 21:29:18 PAGE     1
 
 
-MACRO ASSEMBLER A51 V8.02b
+MACRO ASSEMBLER A51 V8.2.5.0
 OBJECT MODULE PLACED IN 5.OBJ
 ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.exe D:\projects\C51\asmpr\5.1\5.1.A51 DEBUG SYMBOLS OBJECT(5.OBJ) 
 
 LOC  OBJ            LINE     SOURCE
 
 0000                   1                     ORG 0000
+
 0000 801B              2                     JMP MAIN
+
 001B                   3                     ORG 01BH
+
 001B 8016              4                     JMP TIME
+
                        5                     
+
 001D 753305            6     MAIN:           MOV 33H,#05H
+
 0020 75300D            7                     MOV 30H,#13     
+
 0023 758910            8                     MOV TMOD,#10H
+
 0026 758BB0            9                     MOV TL1,#0B0H
+
 0029 758D3C           10                     MOV TH1,#3CH
+
 002C D28E             11                     SETB TR1
+
 002E 75A888           12                     MOV IE,#88H
+
 0031 80FE             13                     SJMP $
+
                       14     
+
 0033                  15     TIME:           ;PUSH PSW
+
                       16                     ;PUSH ACC
+
 0033 758BB0           17                     MOV TL1,#0B0H
+
 0036 758D3C           18                     MOV TH1,#3CH
+
 0039 D5330D           19                     DJNZ 33H,RETURN
+
 003C 753305           20                     MOV 33H,#05H
+
 003F A830             21                     MOV R0,30H
+
 0041 D807             22                     DJNZ R0,LP1
+
 0043 780C             23                     MOV R0,#12
+
 0045 8830             24                     MOV 30H,R0
+
 0047 8001             25                     JMP LP1
+
 0049                  26     RETURN:         ;POP ACC
+
                       27                     ;POP PSW
+
 0049 32               28                     RETI
+
                       29     
+
 004A                  30     LP1:            ;POP ACC
+
                       31                     ;POP PSW
+
 004A 90005C           32                     MOV DPTR,#TAB1
+
 004D E8               33                     MOV A,R0
+
 004E 93               34                     MOVC A,@A+DPTR
+
 004F F590             35                     MOV P1,A
+
 0051 900069           36                     MOV DPTR,#TAB2
+
 0054 E8               37                     MOV A,R0
+
 0055 93               38                     MOVC A,@A+DPTR
+
 0056 F5B0             39                     MOV P3,A
+
                       40                     ;PUSH ACC
+
                       41                     ;PUSH PSW
+
 0058 8830             42                     MOV 30H,R0
+
 005A 80ED             43                     JMP RETURN
+
                       44                   
+
                       45                     
+
 005C 00FFFFFF         46     TAB1:           DB 0,0FFH,0FFH,0FFH,0FFH,07FH,0BFH,0DFH,0EFH,0F7H,0FBH,0FDH,0FEH
+
 0060 FF7FBFDF                
 0064 EFF7FBFD                
 0068 FE                      
 0069 00F7FBFD         47     TAB2:           DB 0,0F7H,0FBH,0FDH,0FEH,0FFH,0FFH,0FFH,0FFH,0FFH,0FFH,0FFH,0FFH
+
 006D FEFFFFFF                
 0071 FFFFFFFF                
 0075 FF                      
-0076 FFFEFCF8         48     TAB3:           DB  0FFH,0FEH,0FCH,0F8H,0F0H,60H,00H
-007A F06000                  
-007D FF070301         49     TAB4:           DB  0FFH,07H,03H,01H,00H,00H,00H
-0081 000000                  
-0084 FFFEFCF8         50     TAB5:           DB  0FFH,0FEH,0FCH,0F8H,0F0H,0E0H,0C0H,80H,00H,00H,00H,00H,00H
-A51 MACRO ASSEMBLER  5_1                                                                  10/20/2016 07:55:53 PAGE     2
+                      48     
 
-0088 F0E0C080                
-008C 00000000                
-0090 00                      
-0091 0F0F0F0F         51     TAB6:           DB  0FH,0FH,0FH,0FH,0FH,0FH,0FH,0FH,0FH,0EH,0CH,08H,00H
-0095 0F0F0F0F                
-0099 0F0E0C08                
-009D 00                      
-                      52                     END
-A51 MACRO ASSEMBLER  5_1                                                                  10/20/2016 07:55:53 PAGE     3
+                      49                     END
+
+A51 MACRO ASSEMBLER  5_1                                                                  10/24/2016 21:29:18 PAGE     2
 
 SYMBOL TABLE LISTING
 ------ ----- -------
@@ -91,10 +127,6 @@ P3 . . . . . . . .  D ADDR   00B0H   A
 RETURN . . . . . .  C ADDR   0049H   A   
 TAB1 . . . . . . .  C ADDR   005CH   A   
 TAB2 . . . . . . .  C ADDR   0069H   A   
-TAB3 . . . . . . .  C ADDR   0076H   A   
-TAB4 . . . . . . .  C ADDR   007DH   A   
-TAB5 . . . . . . .  C ADDR   0084H   A   
-TAB6 . . . . . . .  C ADDR   0091H   A   
 TH1. . . . . . . .  D ADDR   008DH   A   
 TIME . . . . . . .  C ADDR   0033H   A   
 TL1. . . . . . . .  D ADDR   008BH   A   

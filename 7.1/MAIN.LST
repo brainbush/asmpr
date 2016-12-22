@@ -1,0 +1,198 @@
+A51 MACRO ASSEMBLER  MAIN                                                                 10/26/2016 16:20:39 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.5.0
+OBJECT MODULE PLACED IN MAIN.OBJ
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.exe D:\projects\C51\asmpr\7.1\MAIN.A51 DEBUG SYMBOLS OBJECT(MAIN.OBJ) 
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1           ORG 0000
+
+                       2           
+
+0000 900061            3           MOV DPTR,#TAB
+
+                       4           
+
+0003 753012            5           MOV 30H,#12H
+
+0006 753134            6           MOV 31H,#34H
+
+0009 E531              7           MOV A,31H
+
+000B 540F              8           ANL A,#00001111B
+
+000D 93                9           MOVC A,@A+DPTR
+
+000E F8               10           MOV R0,A
+
+                      11             
+
+000F E531             12           MOV A,31H
+
+0011 C4               13           SWAP A
+
+0012 540F             14           ANL A,#00001111B
+
+0014 93               15           MOVC A,@A+DPTR
+
+0015 F9               16           MOV R1,A
+
+                      17              
+
+0016 E530             18           MOV A,30H
+
+0018 540F             19           ANL A,#00001111B
+
+001A 93               20           MOVC A,@A+DPTR
+
+001B FA               21           MOV R2,A
+
+                      22              
+
+001C E530             23           MOV A,30H
+
+001E C4               24           SWAP A
+
+001F 540F             25           ANL A,#00001111B
+
+0021 93               26           MOVC A,@A+DPTR
+
+0022 FB               27           MOV R3,A    
+
+                      28           
+
+0023                  29     START:
+
+0023 8890             30           MOV P1,R0
+
+0025 75A0DF           31           MOV P2,#0DFH
+
+0028 D2B0             32           SETB P3.0
+
+002A D2B1             33           SETB P3.1
+
+002C C2B0             34           CLR P3.0
+
+002E C2B1             35           CLR P3.1
+
+0030 1170             36           CALL DELAY
+
+                      37           
+
+                      38           
+
+0032 8990             39           MOV P1,R1
+
+0034 75A0EF           40           MOV P2,#0EFH 
+
+0037 D2B0             41           SETB P3.0
+
+0039 D2B1             42           SETB P3.1
+
+003B C2B0             43           CLR P3.0
+
+003D C2B1             44           CLR P3.1
+
+003F 1170             45           CALL DELAY
+
+                      46     
+
+0041 8A90             47           MOV P1,R2
+
+0043 75A0F7           48           MOV P2,#0F7H
+
+0046 D2B0             49           SETB P3.0
+
+0048 D2B1             50           SETB P3.1
+
+004A C2B0             51           CLR P3.0
+
+004C C2B1             52           CLR P3.1
+
+004E 1170             53           CALL DELAY
+
+                      54     
+
+0050 8B90             55           MOV P1,R3
+
+0052 75A0FB           56           MOV P2,#0FBH
+
+0055 D2B0             57           SETB P3.0
+
+0057 D2B1             58           SETB P3.1
+
+A51 MACRO ASSEMBLER  MAIN                                                                 10/26/2016 16:20:39 PAGE     2
+
+0059 C2B0             59           CLR P3.0
+
+005B C2B1             60           CLR P3.1
+
+005D 1170             61           CALL DELAY
+
+005F 80C2             62           JMP START
+
+0061 FC60DAF2         63           TAB:      DB 0FCH,060H,0DAH,0F2H,066H,0B6H,0BEH,0E0H,0FEH,0F6H,0EEH,0FFH,09CH,09EH,08
+                             EH
+
+0065 66B6BEE0                
+0069 FEF6EEFF                
+006D 9C9E8E                  
+                      64           
+
+0070                  65             DELAY:
+
+0070 00               66             NOP
+
+0071 C030             67             PUSH 30H
+
+0073 C031             68             PUSH 31H
+
+0075 75305E           69             MOV 30H,#94
+
+0078 75315D           70             MOV 31H,#93
+
+007B                  71     NEXT:
+
+007B D531FD           72             DJNZ 31H,NEXT
+
+007E D530FA           73             DJNZ 30H,NEXT
+
+0081 D031             74             POP 31H
+
+0083 D030             75             POP 30H
+
+0085 22               76             RET
+
+                      77     
+
+                      78     
+
+                      79     
+
+                      80     
+
+                      81           END
+
+A51 MACRO ASSEMBLER  MAIN                                                                 10/26/2016 16:20:39 PAGE     3
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+DELAY. . . . . . .  C ADDR   0070H   A   
+NEXT . . . . . . .  C ADDR   007BH   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+P2 . . . . . . . .  D ADDR   00A0H   A   
+P3 . . . . . . . .  D ADDR   00B0H   A   
+START. . . . . . .  C ADDR   0023H   A   
+TAB. . . . . . . .  C ADDR   0061H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

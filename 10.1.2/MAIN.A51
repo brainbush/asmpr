@@ -1,0 +1,127 @@
+      ORG 0000
+MAIN:      
+      MOV DPTR,#TAB
+      MOV R3,#2
+      MOV SCON,#00H
+      MOV 31H,#00
+      MOV 30H,#00
+CLR0:      
+      MOV SBUF,#003H
+      JNB TI,$
+      CLR TI 
+      DJNZ R3,CLR0
+      
+JDY:  JNB P3.2,KEY1
+      JNB P3.3,KEY2
+      JMP DISP
+      
+KEY1: CALL DELAY10MS
+      JB P3.2,DISP
+      INC 31H
+      MOV A,31H
+      ANL A,#00001111B      
+      CJNE A,#0AH,NTU
+      INC 30H
+      MOV A,30H
+      CJNE A,#0AH,NHU
+      MOV 30H,#00
+NHU:  MOV 31H,#00
+      JMP CHG
+      
+NTU:  MOV 31H,A
+      JMP CHG
+
+KEY2: CALL DELAY10MS
+      JB P3.3,DISP
+      DEC 31H
+      MOV A,31H
+      ANL A,#00001111B      
+      CJNE A,#00FH,NTD
+      DEC 30H
+      MOV A,30H
+      CJNE A,#0FFH,NHD
+      MOV 30H,#09H
+NHD:  MOV 31H,#09H
+      JMP CHG
+      
+NTD:  MOV 31H,A
+      JMP CHG
+      
+CHG:
+	 MOV A,31H
+	 ANL A,#00001111B
+	 MOVC A,@A+DPTR
+	 MOV 51H,A
+	 
+	 MOV A,30H
+	 MOVC A,@A+DPTR
+	 MOV 50H,A
+	 
+	 CALL DELAY200MS
+	 JMP DISP
+
+DISP:
+
+      
+      CLR P3.1
+      MOV P1,#0FFH
+      SETB P3.1
+      MOV P1,50H
+      SETB P3.0  
+      CLR P3.1
+      MOV P1,#0FEH
+      CLR P3.0
+      SETB P3.1
+      CALL DELAY
+      
+      CLR P3.1
+      MOV P1,#0FFH
+      SETB P3.1
+      MOV P1,51H
+      SETB P3.0  
+      CLR P3.1
+      MOV P1,#0FDH
+      CLR P3.0
+      SETB P3.1
+      CALL DELAY
+      JMP JDY
+	 
+	 
+	 JMP JDY
+DELAY10MS:			;@12.000MHz
+	NOP
+
+	MOV 70H,#94
+	MOV 71H,#93
+NEXT1:
+	DJNZ 71H,NEXT1
+	DJNZ 70H,NEXT1
+
+	RET
+	
+DELAY:
+      NOP
+      MOV 60H,#10
+      MOV 61H,#81
+NEXT:
+      DJNZ 61H,NEXT
+      DJNZ 60H,NEXT
+      RET
+DELAY200MS:			;@12.000MHz
+	NOP
+	NOP
+	NOP
+	MOV 60H,#2
+	MOV 61H,#2
+	MOV 62H,#2
+NEXT2:
+	DJNZ 62H,NEXT2
+	DJNZ 61H,NEXT2
+	DJNZ 60H,NEXT2
+	RET
+
+
+      TAB:	DB 0FCH,060H,0DAH,0F2H,066H,0B6H,0BEH,0E0H,0FEH,0F6H,0EEH,0FFH,09CH,09EH,08EH
+
+      END
+

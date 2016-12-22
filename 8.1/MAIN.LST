@@ -1,0 +1,254 @@
+A51 MACRO ASSEMBLER  MAIN                                                                 11/09/2016 16:15:23 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.5.0
+OBJECT MODULE PLACED IN MAIN.OBJ
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.exe D:\projects\C51\asmpr\8.1\MAIN.A51 DEBUG SYMBOLS OBJECT(MAIN.OBJ) 
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1           ORG 0000
+
+0000                   2     MAIN:      
+
+0000 9000A6            3           MOV DPTR,#TAB
+
+                       4               
+
+0003 759000            5     JUDX: MOV P1,#00H
+
+0006 D290              6           SETB P1.0
+
+0008 117A              7           CALL DELAY10MS
+
+000A E590              8           MOV A,P1
+
+000C 54F0              9           ANL A,#11110000B
+
+000E B4002B           10           CJNE A,#00H,JUDY1
+
+0011 C290             11           CLR P1.0
+
+                      12           
+
+0013 D291             13           SETB P1.1
+
+0015 117A             14           CALL DELAY10MS
+
+0017 E590             15           MOV A,P1
+
+0019 54F0             16           ANL A,#11110000B
+
+001B B40023           17           CJNE A,#00H,JUDY2
+
+001E C291             18           CLR P1.1
+
+                      19           
+
+0020 D292             20           SETB P1.2
+
+0022 117A             21           CALL DELAY10MS
+
+0024 E590             22           MOV A,P1
+
+0026 54F0             23           ANL A,#11110000B
+
+0028 B4001B           24           CJNE A,#00H,JUDY3
+
+002B C292             25           CLR P1.2
+
+                      26           
+
+002D D293             27           SETB P1.3
+
+002F 117A             28           CALL DELAY10MS
+
+0031 E590             29           MOV A,P1
+
+0033 54F0             30           ANL A,#11110000B
+
+0035 B40013           31           CJNE A,#00H,JUDY4
+
+0038 C293             32           CLR P1.3
+
+                      33           
+
+003A 80C7             34           JMP JUDX
+
+                      35           
+
+003C                  36     JUDY1:
+
+003C F8               37           MOV R0,A
+
+003D 7400             38           MOV A,#0
+
+003F 800F             39           JMP Y1
+
+0041                  40     JUDY2:
+
+0041 F8               41           MOV R0,A
+
+0042 7404             42           MOV A,#4
+
+0044 800A             43           JMP Y1
+
+0046                  44     JUDY3:
+
+0046 F8               45           MOV R0,A
+
+0047 7408             46           MOV A,#8
+
+0049 8005             47           JMP Y1
+
+004B                  48     JUDY4:
+
+004B F8               49           MOV R0,A
+
+004C 740C             50           MOV A,#0CH
+
+004E 8000             51           JMP Y1
+
+0050 B81004           52     Y1:   CJNE R0,#10H,Y2
+
+0053 2400             53           ADD A,#0
+
+0055 8017             54           JMP CHG
+
+0057 B82004           55     Y2:   CJNE R0,#20H,Y3
+
+005A 2401             56           ADD A,#1
+
+005C 8010             57           JMP CHG
+
+005E B84004           58     Y3:   CJNE R0,#40H,Y4
+
+A51 MACRO ASSEMBLER  MAIN                                                                 11/09/2016 16:15:23 PAGE     2
+
+0061 2402             59           ADD A,#2
+
+0063 8009             60           JMP CHG
+
+0065 B88004           61     Y4:   CJNE R0,#80H,err
+
+0068 2403             62           ADD A,#3
+
+006A 8002             63           JMP CHG
+
+006C 80FE             64     err: jmp $
+
+006E                  65     CHG:
+
+006E 93               66           MOVC A,@A+DPTR
+
+                      67           ;MOV P3,A  
+
+006F F599             68           MOV SBUF,A
+
+0071 3099FD           69           JNB TI,$
+
+0074 C299             70           CLR TI
+
+0076 1190             71           CALL DELAY100MS
+
+0078 8089             72           JMP JUDX
+
+007A                  73     DELAY10MS:                      ;@12.000MHz
+
+007A 00               74             NOP
+
+007B C030             75             PUSH 30H
+
+007D C031             76             PUSH 31H
+
+007F 75305E           77             MOV 30H,#94
+
+0082 75315D           78             MOV 31H,#93
+
+0085                  79     NEXT:
+
+0085 D531FD           80             DJNZ 31H,NEXT
+
+0088 D530FA           81             DJNZ 30H,NEXT
+
+008B D031             82             POP 31H
+
+008D D030             83             POP 30H
+
+008F 22               84             RET
+
+                      85             
+
+0090                  86             DELAY100MS:                     ;@12.000MHz
+
+0090 00               87             NOP
+
+0091 C030             88             PUSH 30H
+
+0093 C031             89             PUSH 31H
+
+0095 75308D           90             MOV 30H,#141
+
+0098 75310E           91             MOV 31H,#14
+
+009B                  92     NEXT1:
+
+009B D531FD           93             DJNZ 31H,NEXT1
+
+009E D530FA           94             DJNZ 30H,NEXT1
+
+00A1 D031             95             POP 31H
+
+00A3 D030             96             POP 30H
+
+00A5 22               97             RET
+
+                      98     
+
+                      99           ;TAB:     DB 03FH,006H,05BH,04FH,066H,06DH,07DH,007H,07FH,06FH,077H,07CH,039H,05EH,07
+                             9H,071H
+
+00A6 039F250D        100              TAB:   DB 003H,09FH,025H,00DH,099H,049H,041H,01FH,001H,009H,011H,0C1H,063H,085H,06
+                             1H,071H
+
+00AA 9949411F                
+00AE 010911C1                
+00B2 63856171                
+                     101     
+
+                     102           END
+
+A51 MACRO ASSEMBLER  MAIN                                                                 11/09/2016 16:15:23 PAGE     3
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+CHG. . . . . . . .  C ADDR   006EH   A   
+DELAY100MS . . . .  C ADDR   0090H   A   
+DELAY10MS. . . . .  C ADDR   007AH   A   
+ERR. . . . . . . .  C ADDR   006CH   A   
+JUDX . . . . . . .  C ADDR   0003H   A   
+JUDY1. . . . . . .  C ADDR   003CH   A   
+JUDY2. . . . . . .  C ADDR   0041H   A   
+JUDY3. . . . . . .  C ADDR   0046H   A   
+JUDY4. . . . . . .  C ADDR   004BH   A   
+MAIN . . . . . . .  C ADDR   0000H   A   
+NEXT . . . . . . .  C ADDR   0085H   A   
+NEXT1. . . . . . .  C ADDR   009BH   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+SBUF . . . . . . .  D ADDR   0099H   A   
+TAB. . . . . . . .  C ADDR   00A6H   A   
+TI . . . . . . . .  B ADDR   0098H.1 A   
+Y1 . . . . . . . .  C ADDR   0050H   A   
+Y2 . . . . . . . .  C ADDR   0057H   A   
+Y3 . . . . . . . .  C ADDR   005EH   A   
+Y4 . . . . . . . .  C ADDR   0065H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)
